@@ -1,13 +1,14 @@
 import { useState, useEffect, useCallback, useRef } from "react";
 
 const DEFAULT_JOURNALS = [
-  { name: "Journal of Communication", issn: "1460-2466", color: "#E63946" },
-  { name: "Political Communication", issn: "1091-7675", color: "#457B9D" },
-  { name: "Intl Journal of Press/Politics", issn: "1940-1612", color: "#2A9D8F" },
-  { name: "Digital Journalism", issn: "2167-0811", color: "#E9C46A" },
-  { name: "New Media & Society", issn: "1461-4448", color: "#F4A261" },
-  { name: "Information, Communication & Society", issn: "1369-118X", color: "#6A4C93" },
+  { name: "Journal of Communication", issn: "0021-9916,1460-2466", color: "#E63946" },
+  { name: "Political Communication", issn: "1058-4609,1091-7675", color: "#457B9D" },
+  { name: "Intl Journal of Press/Politics", issn: "1940-1612,1940-1620", color: "#2A9D8F" },
+  { name: "Digital Journalism", issn: "2167-0811,2167-082X", color: "#E9C46A" },
+  { name: "New Media & Society", issn: "1461-4448,1461-7315", color: "#F4A261" },
+  { name: "Information, Communication & Society", issn: "1369-118X,1468-4462", color: "#6A4C93" },
   { name: "Journal of Computer-Mediated Communication", issn: "1083-6101", color: "#1D3557" },
+  { name: "Social Media + Society", issn: "2056-3051", color: "#3A86FF" },
 ];
 
 const DEFAULT_CONFERENCES = [

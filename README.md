@@ -48,7 +48,7 @@ Conference dates and CFP deadlines are hardcoded in `src/App.jsx` under `DEFAULT
 ## Author
 
 **Bin Chen**
-Assistant Professor, Journalism and Media Studies
+Assistant Professor, School of Future Media
 The University of Hong Kong
 [binchen19.github.io](https://binchen19.github.io/)
 

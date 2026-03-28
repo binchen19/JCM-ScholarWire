@@ -11,16 +11,21 @@ const DEFAULT_JOURNALS = [
   { name: "Social Media + Society", issn: "2056-3051", color: "#3A86FF" },
 ];
 
+// ──────────────────────────────────────────────
+// CONFERENCES — Update this list once per year!
+// Just change the year, dates, location, and
+// cfpDeadline. Ask Claude to look them all up.
+// ──────────────────────────────────────────────
 const DEFAULT_CONFERENCES = [
-  { id: 1, name: "MPSA", fullName: "83rd Midwest Political Science Association Conference", location: "Palmer House Hilton, Chicago, IL", dates: "Apr 23–26, 2026", cfpDeadline: "2025-10-07", cfpNote: "Papers, Roundtables & Complete Panels", url: "https://www.mpsanet.org/" },
-  { id: 2, name: "ICWSM", fullName: "20th Intl AAAI Conference on Web and Social Media", location: "Los Angeles, California", dates: "May 27–29, 2026", cfpDeadline: "2026-01-15", cfpNote: "Full papers & dataset papers", url: "https://www.icwsm.org/2026/" },
-  { id: 3, name: "ICA", fullName: "76th International Communication Association Conference", location: "Cape Town, South Africa", dates: "Jun 4–8, 2026", cfpDeadline: "2025-11-01", cfpNote: "Paper & panel submissions", url: "https://www.icahdq.org/mpage/ICA26" },
-  { id: 4, name: "SM+Society", fullName: "Intl Conference on Social Media & Society (#SMSociety)", location: "University of Glasgow, Glasgow, UK", dates: "Jul 13–15, 2026", cfpDeadline: "2026-01-26", cfpNote: "Extended abstracts (1000–1500 words)", url: "https://socialmediaandsociety.org/smsociety-2026/" },
-  { id: 5, name: "IC2S2", fullName: "12th Intl Conference on Computational Social Science", location: "University of Vermont, Burlington, VT", dates: "Jul 28–31, 2026", cfpDeadline: "2026-03-03", cfpNote: "Extended abstracts (max 2 pages)", url: "https://ic2s2-2026.org/" },
-  { id: 6, name: "AEJMC", fullName: "2026 AEJMC Annual Conference", location: "New Orleans Marriott, New Orleans, LA", dates: "Aug 5–8, 2026", cfpDeadline: "2026-04-01", cfpNote: "Research papers & extended abstracts", url: "https://www.aejmc.org/aejmc-events/conference" },
-  { id: 7, name: "APSA", fullName: "122nd American Political Science Association Annual Meeting", location: "Boston, Massachusetts", dates: "Sep 3–6, 2026", cfpDeadline: "2026-01-14", cfpNote: "Papers, panels & roundtables", url: "https://connect.apsanet.org/apsa2026/" },
-  { id: 8, name: "IJPP", fullName: "IJPP Annual Conference (Details TBA)", location: "TBA — typically October", dates: "Oct 2026 (TBA)", cfpDeadline: "", cfpNote: "Check journal website for updates", url: "https://journals.sagepub.com/home/hij/" },
-  { id: 9, name: "NCA", fullName: "112th National Communication Association Convention", location: "Sheraton New Orleans, New Orleans, LA", dates: "Nov 19–22, 2026", cfpDeadline: "2026-03-25", cfpNote: "Papers, panels & poster submissions", url: "https://www.natcom.org/nca-112th-annual-convention/" },
+  { id: 1, name: "MPSA", fullName: "83rd Midwest Political Science Association Conference", location: "Palmer House Hilton, Chicago, IL", dates: "Apr 23–26, 2026", startDate: "2026-04-23", cfpDeadline: "2025-10-07", cfpNote: "Papers, Roundtables & Complete Panels", url: "https://www.mpsanet.org/" },
+  { id: 2, name: "ICWSM", fullName: "20th Intl AAAI Conference on Web and Social Media", location: "Los Angeles, California", dates: "May 27–29, 2026", startDate: "2026-05-27", cfpDeadline: "2026-01-15", cfpNote: "Full papers & dataset papers", url: "https://www.icwsm.org/2026/" },
+  { id: 3, name: "ICA", fullName: "76th International Communication Association Conference", location: "Cape Town, South Africa", dates: "Jun 4–8, 2026", startDate: "2026-06-04", cfpDeadline: "2025-11-01", cfpNote: "Paper & panel submissions", url: "https://www.icahdq.org/mpage/ICA26" },
+  { id: 4, name: "SM+Society", fullName: "Intl Conference on Social Media & Society (#SMSociety)", location: "University of Glasgow, Glasgow, UK", dates: "Jul 13–15, 2026", startDate: "2026-07-13", cfpDeadline: "2026-01-26", cfpNote: "Extended abstracts (1000–1500 words)", url: "https://socialmediaandsociety.org/smsociety-2026/" },
+  { id: 5, name: "IC2S2", fullName: "12th Intl Conference on Computational Social Science", location: "University of Vermont, Burlington, VT", dates: "Jul 28–31, 2026", startDate: "2026-07-28", cfpDeadline: "2026-03-03", cfpNote: "Extended abstracts (max 2 pages)", url: "https://ic2s2-2026.org/" },
+  { id: 6, name: "AEJMC", fullName: "2026 AEJMC Annual Conference", location: "New Orleans Marriott, New Orleans, LA", dates: "Aug 5–8, 2026", startDate: "2026-08-05", cfpDeadline: "2026-04-01", cfpNote: "Research papers & extended abstracts", url: "https://www.aejmc.org/aejmc-events/conference" },
+  { id: 7, name: "APSA", fullName: "122nd American Political Science Association Annual Meeting", location: "Boston, Massachusetts", dates: "Sep 3–6, 2026", startDate: "2026-09-03", cfpDeadline: "2026-01-14", cfpNote: "Papers, panels & roundtables", url: "https://connect.apsanet.org/apsa2026/" },
+  { id: 8, name: "IJPP", fullName: "IJPP Annual Conference (Details TBA)", location: "TBA — typically October", dates: "Oct 2026 (TBA)", startDate: "2026-10-15", cfpDeadline: "", cfpNote: "Check journal website for updates", url: "https://journals.sagepub.com/home/hij/" },
+  { id: 9, name: "NCA", fullName: "112th National Communication Association Convention", location: "Sheraton New Orleans, New Orleans, LA", dates: "Nov 19–22, 2026", startDate: "2026-11-19", cfpDeadline: "2026-03-25", cfpNote: "Papers, panels & poster submissions", url: "https://www.natcom.org/nca-112th-annual-convention/" },
 ];
 
 const TABS = ["Feed", "Journals", "Conferences", "CFPs"];
@@ -74,20 +79,30 @@ function ArticleCard({ article, journalColor }) {
 }
 
 function ConferenceCard({ conf, onDelete }) {
-  const isPast = conf.cfpDeadline && new Date(conf.cfpDeadline) < new Date();
-  const days = conf.cfpDeadline ? daysUntil(conf.cfpDeadline) : null;
+  const isPastEvent = conf.startDate && new Date(conf.startDate) < new Date();
+  const isPastCfp = conf.cfpDeadline && new Date(conf.cfpDeadline) < new Date();
+  const cfpDays = conf.cfpDeadline ? daysUntil(conf.cfpDeadline) : null;
+  const eventDays = conf.startDate ? daysUntil(conf.startDate) : null;
   return (
-    <div style={{ borderBottom: "1px solid #eee", padding: "16px 0" }}>
+    <div style={{ borderBottom: "1px solid #eee", padding: "16px 0", opacity: isPastEvent ? 0.5 : 1 }}>
       <div style={{ display: "flex", alignItems: "flex-start", gap: 14 }}>
-        <div style={{ width: 48, height: 48, borderRadius: 4, background: isPast ? "#ddd" : "#457B9D", display: "flex", alignItems: "center", justifyContent: "center", color: "#fff", fontSize: 11, fontWeight: 700, fontFamily: "'JetBrains Mono', monospace", flexShrink: 0, letterSpacing: "-0.5px" }}>{conf.name}</div>
+        <div style={{ width: 48, height: 48, borderRadius: 4, background: isPastEvent ? "#ddd" : "#457B9D", display: "flex", alignItems: "center", justifyContent: "center", color: "#fff", fontSize: 11, fontWeight: 700, fontFamily: "'JetBrains Mono', monospace", flexShrink: 0, letterSpacing: "-0.5px" }}>{conf.name}</div>
         <div style={{ flex: 1 }}>
           <div style={{ display: "flex", gap: 6, alignItems: "center", marginBottom: 4, flexWrap: "wrap" }}>
-            {isPast ? <Badge color="#999">CFP Closed</Badge> : conf.cfpDeadline ? (days <= 14 ? <Badge color="#E63946">{days}d left</Badge> : days <= 30 ? <Badge color="#F4A261">{days}d left</Badge> : <Badge color="#2A9D8F">Open</Badge>) : <Badge color="#6A4C93">TBA</Badge>}
+            {isPastEvent ? <Badge color="#999">Past</Badge> :
+              eventDays !== null && eventDays <= 30 ? <Badge color="#E63946">In {eventDays}d</Badge> :
+              eventDays !== null && eventDays <= 90 ? <Badge color="#F4A261">In {eventDays}d</Badge> :
+              <Badge color="#2A9D8F">Upcoming</Badge>}
+            {!isPastCfp && conf.cfpDeadline ? (
+              cfpDays <= 14 ? <Badge color="#E63946">CFP: {cfpDays}d left</Badge> :
+              cfpDays <= 30 ? <Badge color="#F4A261">CFP: {cfpDays}d left</Badge> :
+              <Badge color="#457B9D">CFP Open</Badge>
+            ) : conf.cfpDeadline ? <Badge color="#999">CFP Closed</Badge> : <Badge color="#6A4C93">CFP TBA</Badge>}
           </div>
           <h3 style={{ fontSize: 14, fontWeight: 600, margin: "0 0 4px", lineHeight: 1.4, fontFamily: "'Source Serif 4', Georgia, serif", color: "#1a1a1a" }}>{conf.fullName}</h3>
           <p style={{ fontSize: 12, color: "#777", margin: "0 0 2px", fontFamily: "'JetBrains Mono', monospace" }}>📍 {conf.location}</p>
           <p style={{ fontSize: 12, color: "#555", margin: "0 0 2px", fontFamily: "'JetBrains Mono', monospace" }}>📅 {conf.dates}</p>
-          {conf.cfpDeadline && <p style={{ fontSize: 11, color: isPast ? "#999" : "#E63946", margin: "0 0 2px", fontFamily: "'JetBrains Mono', monospace", textDecoration: isPast ? "line-through" : "none" }}>✏️ Submission deadline: {formatDate(conf.cfpDeadline)}</p>}
+          {conf.cfpDeadline && <p style={{ fontSize: 11, color: isPastCfp ? "#999" : "#E63946", margin: "0 0 2px", fontFamily: "'JetBrains Mono', monospace", textDecoration: isPastCfp ? "line-through" : "none" }}>✏️ Submission deadline: {formatDate(conf.cfpDeadline)}</p>}
           {conf.cfpNote && <p style={{ fontSize: 11, color: "#aaa", margin: "0 0 4px", fontFamily: "'JetBrains Mono', monospace", fontStyle: "italic" }}>{conf.cfpNote}</p>}
           {conf.url && <a href={conf.url} target="_blank" rel="noopener noreferrer" style={{ fontSize: 11, color: "#457B9D", fontFamily: "'JetBrains Mono', monospace" }}>Visit website →</a>}
         </div>
@@ -125,8 +140,8 @@ function CfpCard({ cfp, onDelete }) {
 export default function JournalTracker() {
   const [journals, setJournals] = useState(() => { try { const s = localStorage.getItem("jcm-journals"); return s ? JSON.parse(s) : DEFAULT_JOURNALS; } catch { return DEFAULT_JOURNALS; } });
   const [articles, setArticles] = useState([]);
-  const [conferences, setConferences] = useState(() => { try { const s = localStorage.getItem("jcm-conf-v4"); return s ? JSON.parse(s) : DEFAULT_CONFERENCES; } catch { return DEFAULT_CONFERENCES; } });
-  const [cfps, setCfps] = useState(() => { try { const s = localStorage.getItem("jcm-cfps-v4"); return s ? JSON.parse(s) : []; } catch { return []; } });
+  const [conferences, setConferences] = useState(() => { try { const s = localStorage.getItem("jcm-conf-v5"); return s ? JSON.parse(s) : DEFAULT_CONFERENCES; } catch { return DEFAULT_CONFERENCES; } });
+  const [cfps, setCfps] = useState(() => { try { const s = localStorage.getItem("jcm-cfps-v5"); return s ? JSON.parse(s) : []; } catch { return []; } });
   const [loading, setLoading] = useState(false);
   const [tab, setTab] = useState("Feed");
   const [searchTerm, setSearchTerm] = useState("");
@@ -137,16 +152,16 @@ export default function JournalTracker() {
   const [showAddConf, setShowAddConf] = useState(false);
   const [newJournal, setNewJournal] = useState({ name: "", issn: "" });
   const [newCfp, setNewCfp] = useState({ title: "", type: "Special Issue", venue: "", deadline: "", url: "" });
-  const [newConf, setNewConf] = useState({ name: "", fullName: "", location: "", dates: "", cfpDeadline: "", cfpNote: "", url: "" });
+  const [newConf, setNewConf] = useState({ name: "", fullName: "", location: "", dates: "", startDate: "", cfpDeadline: "", cfpNote: "", url: "" });
   const [fetchError, setFetchError] = useState("");
   const [stats, setStats] = useState({});
-  const [confFilter, setConfFilter] = useState("all");
+  const [confFilter, setConfFilter] = useState("upcoming");
   const [cfpFilter, setCfpFilter] = useState("upcoming");
   const hasFetched = useRef(false);
 
   useEffect(() => { try { localStorage.setItem("jcm-journals", JSON.stringify(journals)); } catch {} }, [journals]);
-  useEffect(() => { try { localStorage.setItem("jcm-conf-v4", JSON.stringify(conferences)); } catch {} }, [conferences]);
-  useEffect(() => { try { localStorage.setItem("jcm-cfps-v4", JSON.stringify(cfps)); } catch {} }, [cfps]);
+  useEffect(() => { try { localStorage.setItem("jcm-conf-v5", JSON.stringify(conferences)); } catch {} }, [conferences]);
+  useEffect(() => { try { localStorage.setItem("jcm-cfps-v5", JSON.stringify(cfps)); } catch {} }, [cfps]);
 
   const fetchArticles = useCallback(async () => {
     setLoading(true); setFetchError("");
@@ -186,12 +201,31 @@ export default function JournalTracker() {
     if (searchTerm) { const s = searchTerm.toLowerCase(); return (a.title || "").toLowerCase().includes(s) || (a.authors || []).some(au => au.toLowerCase().includes(s)) || (a.concepts || []).some(c => c.toLowerCase().includes(s)); }
     return true;
   });
-  const filteredConfs = conferences.filter(c => { if (confFilter === "open") return !c.cfpDeadline || new Date(c.cfpDeadline) >= new Date(); if (confFilter === "closed") return c.cfpDeadline && new Date(c.cfpDeadline) < new Date(); return true; });
+
+  const sortedConfs = [...conferences].sort((a, b) => {
+    const da = a.startDate ? new Date(a.startDate) : new Date("2099-01-01");
+    const db = b.startDate ? new Date(b.startDate) : new Date("2099-01-01");
+    const now = new Date();
+    const aUpcoming = da >= now;
+    const bUpcoming = db >= now;
+    // Upcoming first (nearest first), then past (most recent first)
+    if (aUpcoming && bUpcoming) return da - db;
+    if (!aUpcoming && !bUpcoming) return db - da;
+    if (aUpcoming) return -1;
+    return 1;
+  });
+
+  const filteredConfs = sortedConfs.filter(c => {
+    if (confFilter === "upcoming") return !c.startDate || new Date(c.startDate) >= new Date();
+    if (confFilter === "past") return c.startDate && new Date(c.startDate) < new Date();
+    return true;
+  });
+
   const filteredCfps = cfps.filter(c => { if (cfpFilter === "upcoming") return !c.deadline || new Date(c.deadline) >= new Date(); if (cfpFilter === "past") return c.deadline && new Date(c.deadline) < new Date(); return true; });
 
   const addJournal = () => { if (!newJournal.name || !newJournal.issn) return; const colors = ["#264653","#E76F51","#606C38","#BC6C25","#023047","#8338EC","#FF006E","#3A86FF"]; setJournals([...journals, { ...newJournal, color: colors[journals.length % colors.length] }]); setNewJournal({ name: "", issn: "" }); setShowAddJournal(false); };
   const addCfp = () => { if (!newCfp.title) return; setCfps([...cfps, { ...newCfp, id: Date.now() }]); setNewCfp({ title: "", type: "Special Issue", venue: "", deadline: "", url: "" }); setShowAddCfp(false); };
-  const addConf = () => { if (!newConf.name || !newConf.fullName) return; setConferences([...conferences, { ...newConf, id: Date.now() }]); setNewConf({ name: "", fullName: "", location: "", dates: "", cfpDeadline: "", cfpNote: "", url: "" }); setShowAddConf(false); };
+  const addConf = () => { if (!newConf.name || !newConf.fullName) return; setConferences([...conferences, { ...newConf, id: Date.now() }]); setNewConf({ name: "", fullName: "", location: "", dates: "", startDate: "", cfpDeadline: "", cfpNote: "", url: "" }); setShowAddConf(false); };
 
   const inputStyle = { width: "100%", padding: "8px 10px", fontSize: 13, border: "1px solid #ddd", borderRadius: 3, fontFamily: "'JetBrains Mono', monospace", boxSizing: "border-box", outline: "none" };
   const labelStyle = { fontSize: 11, fontWeight: 700, color: "#999", marginBottom: 4, display: "block", fontFamily: "'JetBrains Mono', monospace", textTransform: "uppercase", letterSpacing: "0.5px" };
@@ -202,7 +236,7 @@ export default function JournalTracker() {
   const totalArticles = filteredArticles.length;
   const newThisWeek = articles.filter(a => daysAgo(a.publication_date) <= 7).length;
   const oaCount = articles.filter(a => a.open_access).length;
-  const openCfpCount = conferences.filter(c => !c.cfpDeadline || new Date(c.cfpDeadline) >= new Date()).length;
+  const upcomingConfCount = conferences.filter(c => !c.startDate || new Date(c.startDate) >= new Date()).length;
 
   return (
     <div style={{ fontFamily: "'Source Serif 4', Georgia, serif", maxWidth: 780, margin: "0 auto", padding: "0 20px", minHeight: "100vh" }}>
@@ -224,7 +258,7 @@ export default function JournalTracker() {
       </header>
 
       <div style={{ display: "flex", gap: 0, borderBottom: "1px solid #eee", padding: "12px 0" }}>
-        {[{ label: "Articles", value: totalArticles }, { label: "New this week", value: newThisWeek }, { label: "Open Access", value: oaCount }, { label: "Journals", value: journals.length }, { label: "Open CFPs", value: openCfpCount }].map((s, i) => (
+        {[{ label: "Articles", value: totalArticles }, { label: "New this week", value: newThisWeek }, { label: "Open Access", value: oaCount }, { label: "Journals", value: journals.length }, { label: "Upcoming", value: upcomingConfCount }].map((s, i) => (
           <div key={i} style={{ flex: 1, textAlign: "center", borderRight: i < 4 ? "1px solid #eee" : "none" }}>
             <div style={{ fontSize: 20, fontWeight: 700, color: "#1a1a1a", fontFamily: "'Source Serif 4', Georgia, serif" }}>{s.value}</div>
             <div style={{ fontSize: 9, color: "#aaa", textTransform: "uppercase", fontFamily: "'JetBrains Mono', monospace", letterSpacing: "0.5px" }}>{s.label}</div>
@@ -298,8 +332,8 @@ export default function JournalTracker() {
         <div style={{ animation: "fadeIn 0.3s ease", padding: "16px 0" }}>
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 12, flexWrap: "wrap", gap: 10 }}>
             <div style={{ display: "flex", gap: 6 }}>
-              {["all", "open", "closed"].map(f => (
-                <button key={f} onClick={() => setConfFilter(f)} style={filterBtn(confFilter === f)}>{f === "open" ? "CFP Open" : f === "closed" ? "CFP Closed" : "All"}</button>
+              {["upcoming", "past", "all"].map(f => (
+                <button key={f} onClick={() => setConfFilter(f)} style={filterBtn(confFilter === f)}>{f}</button>
               ))}
             </div>
             <button onClick={() => setShowAddConf(!showAddConf)} style={btnPrimary}>+ Add Conference</button>
@@ -314,7 +348,8 @@ export default function JournalTracker() {
                 </div>
                 <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
                   <div style={{ flex: "1 1 200px" }}><label style={labelStyle}>Location</label><input value={newConf.location} onChange={e => setNewConf({ ...newConf, location: e.target.value })} placeholder="e.g. Berlin, Germany" style={inputStyle} /></div>
-                  <div style={{ flex: "0 1 160px" }}><label style={labelStyle}>Event Dates</label><input value={newConf.dates} onChange={e => setNewConf({ ...newConf, dates: e.target.value })} placeholder="e.g. Jun 10–13, 2026" style={inputStyle} /></div>
+                  <div style={{ flex: "0 1 160px" }}><label style={labelStyle}>Event Dates (text)</label><input value={newConf.dates} onChange={e => setNewConf({ ...newConf, dates: e.target.value })} placeholder="e.g. Jun 10–13, 2026" style={inputStyle} /></div>
+                  <div style={{ flex: "0 1 150px" }}><label style={labelStyle}>Start Date</label><input type="date" value={newConf.startDate} onChange={e => setNewConf({ ...newConf, startDate: e.target.value })} style={inputStyle} /></div>
                 </div>
                 <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
                   <div style={{ flex: "0 1 160px" }}><label style={labelStyle}>CFP Deadline</label><input type="date" value={newConf.cfpDeadline} onChange={e => setNewConf({ ...newConf, cfpDeadline: e.target.value })} style={inputStyle} /></div>
@@ -326,11 +361,7 @@ export default function JournalTracker() {
             </div>
           )}
 
-          {filteredConfs.sort((a, b) => {
-            const da = a.cfpDeadline ? new Date(a.cfpDeadline) : new Date("2099-01-01");
-            const db = b.cfpDeadline ? new Date(b.cfpDeadline) : new Date("2099-01-01");
-            return da - db;
-          }).map(c => <ConferenceCard key={c.id} conf={c} onDelete={(id) => setConferences(conferences.filter(x => x.id !== id))} />)}
+          {filteredConfs.map(c => <ConferenceCard key={c.id} conf={c} onDelete={(id) => setConferences(conferences.filter(x => x.id !== id))} />)}
         </div>
       )}
 

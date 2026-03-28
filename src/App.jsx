@@ -146,7 +146,7 @@ export default function JournalTracker() {
   const [tab, setTab] = useState("Feed");
   const [searchTerm, setSearchTerm] = useState("");
   const [filterJournal, setFilterJournal] = useState("All");
-  const [timeRange, setTimeRange] = useState("30");
+  const [timeRange, setTimeRange] = useState("90");
   const [showAddJournal, setShowAddJournal] = useState(false);
   const [showAddCfp, setShowAddCfp] = useState(false);
   const [showAddConf, setShowAddConf] = useState(false);
@@ -191,7 +191,7 @@ export default function JournalTracker() {
     }
     allArticles.sort((a, b) => new Date(b.publication_date) - new Date(a.publication_date));
     setArticles(allArticles); setStats(journalStats); setLoading(false);
-    if (allArticles.length === 0) setFetchError("No articles found. Try expanding the time range.");
+    if (allArticles.length === 0) setFetchError("No articles found in this date range. Try expanding the time range.");
   }, [journals, timeRange]);
 
   useEffect(() => { if (!hasFetched.current) { hasFetched.current = true; fetchArticles(); } }, [fetchArticles]);

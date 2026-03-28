@@ -12,99 +12,31 @@ const DEFAULT_JOURNALS = [
 ];
 
 const DEFAULT_CONFERENCES = [
-  {
-    id: 1, name: "MPSA", fullName: "83rd Midwest Political Science Association Conference",
-    location: "Palmer House Hilton, Chicago, IL", dates: "Apr 23–26, 2026",
-    cfpDeadline: "2025-10-07", cfpNote: "Papers, Roundtables & Complete Panels",
-    url: "https://www.mpsanet.org/",
-  },
-  {
-    id: 2, name: "ICWSM", fullName: "20th Intl AAAI Conference on Web and Social Media",
-    location: "Los Angeles, California", dates: "May 27–29, 2026",
-    cfpDeadline: "2026-01-15", cfpNote: "Full papers & dataset papers",
-    url: "https://www.icwsm.org/2026/",
-  },
-  {
-    id: 3, name: "ICA", fullName: "76th International Communication Association Conference",
-    location: "Cape Town, South Africa", dates: "Jun 4–8, 2026",
-    cfpDeadline: "2025-11-01", cfpNote: "Paper & panel submissions",
-    url: "https://www.icahdq.org/mpage/ICA26",
-  },
-  {
-    id: 4, name: "SM+Society", fullName: "Intl Conference on Social Media & Society (#SMSociety)",
-    location: "University of Glasgow, Glasgow, UK", dates: "Jul 13–15, 2026",
-    cfpDeadline: "2026-01-26", cfpNote: "Extended abstracts (1000–1500 words)",
-    url: "https://socialmediaandsociety.org/smsociety-2026/",
-  },
-  {
-    id: 5, name: "IC2S2", fullName: "12th Intl Conference on Computational Social Science",
-    location: "University of Vermont, Burlington, VT", dates: "Jul 28–31, 2026",
-    cfpDeadline: "2026-03-03", cfpNote: "Extended abstracts (max 2 pages)",
-    url: "https://ic2s2-2026.org/",
-  },
-  {
-    id: 6, name: "AEJMC", fullName: "2026 AEJMC Annual Conference",
-    location: "New Orleans Marriott, New Orleans, LA", dates: "Aug 5–8, 2026",
-    cfpDeadline: "2026-04-01", cfpNote: "Research papers & extended abstracts",
-    url: "https://www.aejmc.org/aejmc-events/conference",
-  },
-  {
-    id: 7, name: "APSA", fullName: "122nd American Political Science Association Annual Meeting",
-    location: "Boston, Massachusetts", dates: "Sep 3–6, 2026",
-    cfpDeadline: "2026-01-14", cfpNote: "Papers, panels & roundtables",
-    url: "https://connect.apsanet.org/apsa2026/",
-  },
-  {
-    id: 8, name: "IJPP", fullName: "IJPP Annual Conference (Details TBA)",
-    location: "TBA — typically October", dates: "Oct 2026 (TBA)",
-    cfpDeadline: "", cfpNote: "Check journal website for updates",
-    url: "https://journals.sagepub.com/home/hij/",
-  },
-  {
-    id: 9, name: "NCA", fullName: "112th National Communication Association Convention",
-    location: "Sheraton New Orleans, New Orleans, LA", dates: "Nov 19–22, 2026",
-    cfpDeadline: "2026-03-25", cfpNote: "Papers, panels & poster submissions",
-    url: "https://www.natcom.org/nca-112th-annual-convention/",
-  },
+  { id: 1, name: "MPSA", fullName: "83rd Midwest Political Science Association Conference", location: "Palmer House Hilton, Chicago, IL", dates: "Apr 23–26, 2026", cfpDeadline: "2025-10-07", cfpNote: "Papers, Roundtables & Complete Panels", url: "https://www.mpsanet.org/" },
+  { id: 2, name: "ICWSM", fullName: "20th Intl AAAI Conference on Web and Social Media", location: "Los Angeles, California", dates: "May 27–29, 2026", cfpDeadline: "2026-01-15", cfpNote: "Full papers & dataset papers", url: "https://www.icwsm.org/2026/" },
+  { id: 3, name: "ICA", fullName: "76th International Communication Association Conference", location: "Cape Town, South Africa", dates: "Jun 4–8, 2026", cfpDeadline: "2025-11-01", cfpNote: "Paper & panel submissions", url: "https://www.icahdq.org/mpage/ICA26" },
+  { id: 4, name: "SM+Society", fullName: "Intl Conference on Social Media & Society (#SMSociety)", location: "University of Glasgow, Glasgow, UK", dates: "Jul 13–15, 2026", cfpDeadline: "2026-01-26", cfpNote: "Extended abstracts (1000–1500 words)", url: "https://socialmediaandsociety.org/smsociety-2026/" },
+  { id: 5, name: "IC2S2", fullName: "12th Intl Conference on Computational Social Science", location: "University of Vermont, Burlington, VT", dates: "Jul 28–31, 2026", cfpDeadline: "2026-03-03", cfpNote: "Extended abstracts (max 2 pages)", url: "https://ic2s2-2026.org/" },
+  { id: 6, name: "AEJMC", fullName: "2026 AEJMC Annual Conference", location: "New Orleans Marriott, New Orleans, LA", dates: "Aug 5–8, 2026", cfpDeadline: "2026-04-01", cfpNote: "Research papers & extended abstracts", url: "https://www.aejmc.org/aejmc-events/conference" },
+  { id: 7, name: "APSA", fullName: "122nd American Political Science Association Annual Meeting", location: "Boston, Massachusetts", dates: "Sep 3–6, 2026", cfpDeadline: "2026-01-14", cfpNote: "Papers, panels & roundtables", url: "https://connect.apsanet.org/apsa2026/" },
+  { id: 8, name: "IJPP", fullName: "IJPP Annual Conference (Details TBA)", location: "TBA — typically October", dates: "Oct 2026 (TBA)", cfpDeadline: "", cfpNote: "Check journal website for updates", url: "https://journals.sagepub.com/home/hij/" },
+  { id: 9, name: "NCA", fullName: "112th National Communication Association Convention", location: "Sheraton New Orleans, New Orleans, LA", dates: "Nov 19–22, 2026", cfpDeadline: "2026-03-25", cfpNote: "Papers, panels & poster submissions", url: "https://www.natcom.org/nca-112th-annual-convention/" },
 ];
 
 const TABS = ["Feed", "Journals", "Conferences", "CFPs"];
 
-function formatDate(dateStr) {
-  if (!dateStr) return "";
-  const d = new Date(dateStr);
-  return d.toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" });
-}
-
-function daysAgo(dateStr) {
-  if (!dateStr) return Infinity;
-  return Math.floor((new Date() - new Date(dateStr)) / (1000 * 60 * 60 * 24));
-}
-
-function daysUntil(dateStr) {
-  if (!dateStr) return Infinity;
-  return Math.ceil((new Date(dateStr) - new Date()) / (1000 * 60 * 60 * 24));
-}
+function formatDate(d) { if (!d) return ""; return new Date(d).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" }); }
+function daysAgo(d) { if (!d) return Infinity; return Math.floor((new Date() - new Date(d)) / 864e5); }
+function daysUntil(d) { if (!d) return Infinity; return Math.ceil((new Date(d) - new Date()) / 864e5); }
 
 function Badge({ color, children }) {
-  return (
-    <span style={{
-      display: "inline-block", padding: "2px 10px", borderRadius: "2px",
-      fontSize: "10px", fontWeight: 700, letterSpacing: "0.5px",
-      textTransform: "uppercase", background: color || "#333", color: "#fff",
-      marginRight: "6px", fontFamily: "'JetBrains Mono', monospace",
-    }}>{children}</span>
-  );
+  return <span style={{ display: "inline-block", padding: "2px 10px", borderRadius: 2, fontSize: 10, fontWeight: 700, letterSpacing: "0.5px", textTransform: "uppercase", background: color || "#333", color: "#fff", marginRight: 6, fontFamily: "'JetBrains Mono', monospace" }}>{children}</span>;
 }
 
 function Spinner() {
   return (
     <div style={{ display: "flex", alignItems: "center", gap: 10, padding: "40px 0", justifyContent: "center" }}>
-      <div style={{
-        width: 20, height: 20, border: "2.5px solid #e0e0e0",
-        borderTopColor: "#E63946", borderRadius: "50%",
-        animation: "spin 0.8s linear infinite",
-      }} />
+      <div style={{ width: 20, height: 20, border: "2.5px solid #e0e0e0", borderTopColor: "#E63946", borderRadius: "50%", animation: "spin 0.8s linear infinite" }} />
       <span style={{ color: "#888", fontSize: 13, fontFamily: "'JetBrains Mono', monospace" }}>Fetching articles…</span>
     </div>
   );
@@ -112,39 +44,26 @@ function Spinner() {
 
 function ArticleCard({ article, journalColor }) {
   const days = daysAgo(article.publication_date);
-  const isNew = days <= 7;
   return (
-    <a href={article.doi ? `https://doi.org/${article.doi}` : (article.url || "#")}
-      target="_blank" rel="noopener noreferrer"
-      style={{ display: "block", textDecoration: "none", color: "inherit",
-        borderBottom: "1px solid #eee", padding: "18px 0", transition: "background 0.15s" }}
-      onMouseEnter={e => e.currentTarget.style.background = "#fafafa"}
-      onMouseLeave={e => e.currentTarget.style.background = "transparent"}>
+    <a href={article.doi ? `https://doi.org/${article.doi}` : (article.url || "#")} target="_blank" rel="noopener noreferrer"
+      style={{ display: "block", textDecoration: "none", color: "inherit", borderBottom: "1px solid #eee", padding: "18px 0", transition: "background 0.15s" }}
+      onMouseEnter={e => e.currentTarget.style.background = "#fafafa"} onMouseLeave={e => e.currentTarget.style.background = "transparent"}>
       <div style={{ display: "flex", alignItems: "flex-start", gap: 14 }}>
-        <div style={{ width: 4, minHeight: 50, borderRadius: 2,
-          background: journalColor || "#ccc", marginTop: 2, flexShrink: 0 }} />
+        <div style={{ width: 4, minHeight: 50, borderRadius: 2, background: journalColor || "#ccc", marginTop: 2, flexShrink: 0 }} />
         <div style={{ flex: 1, minWidth: 0 }}>
           <div style={{ display: "flex", alignItems: "center", gap: 8, flexWrap: "wrap", marginBottom: 6 }}>
             <Badge color={journalColor}>{article.journal_short || article.journal}</Badge>
-            {isNew && <Badge color="#E63946">New</Badge>}
-            <span style={{ fontSize: 11, color: "#999", fontFamily: "'JetBrains Mono', monospace" }}>
-              {formatDate(article.publication_date)}
-            </span>
+            {days <= 7 && <Badge color="#E63946">New</Badge>}
+            <span style={{ fontSize: 11, color: "#999", fontFamily: "'JetBrains Mono', monospace" }}>{formatDate(article.publication_date)}</span>
           </div>
-          <h3 style={{ fontSize: 15, fontWeight: 600, lineHeight: 1.45, margin: "0 0 6px 0",
-            fontFamily: "'Source Serif 4', Georgia, serif", color: "#1a1a1a" }}>
-            {article.title || "Untitled"}
-          </h3>
-          <p style={{ fontSize: 12, color: "#777", margin: 0, lineHeight: 1.4,
-            fontFamily: "'JetBrains Mono', monospace" }}>
-            {(article.authors || []).slice(0, 4).join(", ")}
-            {(article.authors || []).length > 4 ? ` + ${article.authors.length - 4} more` : ""}
+          <h3 style={{ fontSize: 15, fontWeight: 600, lineHeight: 1.45, margin: "0 0 6px", fontFamily: "'Source Serif 4', Georgia, serif", color: "#1a1a1a" }}>{article.title || "Untitled"}</h3>
+          <p style={{ fontSize: 12, color: "#777", margin: 0, lineHeight: 1.4, fontFamily: "'JetBrains Mono', monospace" }}>
+            {(article.authors || []).slice(0, 4).join(", ")}{(article.authors || []).length > 4 ? ` + ${article.authors.length - 4} more` : ""}
           </p>
-          {article.concepts && article.concepts.length > 0 && (
+          {article.concepts?.length > 0 && (
             <div style={{ marginTop: 8, display: "flex", gap: 4, flexWrap: "wrap" }}>
               {article.concepts.slice(0, 5).map((c, i) => (
-                <span key={i} style={{ fontSize: 10, color: "#999", border: "1px solid #e8e8e8",
-                  borderRadius: 2, padding: "1px 6px", fontFamily: "'JetBrains Mono', monospace" }}>{c}</span>
+                <span key={i} style={{ fontSize: 10, color: "#999", border: "1px solid #e8e8e8", borderRadius: 2, padding: "1px 6px", fontFamily: "'JetBrains Mono', monospace" }}>{c}</span>
               ))}
             </div>
           )}
@@ -154,58 +73,26 @@ function ArticleCard({ article, journalColor }) {
   );
 }
 
-function ConferenceCard({ conf }) {
+function ConferenceCard({ conf, onDelete }) {
   const isPast = conf.cfpDeadline && new Date(conf.cfpDeadline) < new Date();
   const days = conf.cfpDeadline ? daysUntil(conf.cfpDeadline) : null;
   return (
     <div style={{ borderBottom: "1px solid #eee", padding: "16px 0" }}>
       <div style={{ display: "flex", alignItems: "flex-start", gap: 14 }}>
-        <div style={{
-          width: 48, height: 48, borderRadius: 4, background: isPast ? "#ddd" : "#457B9D",
-          display: "flex", alignItems: "center", justifyContent: "center",
-          color: "#fff", fontSize: 11, fontWeight: 700, fontFamily: "'JetBrains Mono', monospace",
-          flexShrink: 0, letterSpacing: "-0.5px",
-        }}>{conf.name}</div>
+        <div style={{ width: 48, height: 48, borderRadius: 4, background: isPast ? "#ddd" : "#457B9D", display: "flex", alignItems: "center", justifyContent: "center", color: "#fff", fontSize: 11, fontWeight: 700, fontFamily: "'JetBrains Mono', monospace", flexShrink: 0, letterSpacing: "-0.5px" }}>{conf.name}</div>
         <div style={{ flex: 1 }}>
           <div style={{ display: "flex", gap: 6, alignItems: "center", marginBottom: 4, flexWrap: "wrap" }}>
-            {isPast ? (
-              <Badge color="#999">CFP Closed</Badge>
-            ) : conf.cfpDeadline ? (
-              days <= 14 ? <Badge color="#E63946">{days}d left</Badge> :
-              days <= 30 ? <Badge color="#F4A261">{days}d left</Badge> :
-              <Badge color="#2A9D8F">Open</Badge>
-            ) : (
-              <Badge color="#6A4C93">TBA</Badge>
-            )}
+            {isPast ? <Badge color="#999">CFP Closed</Badge> : conf.cfpDeadline ? (days <= 14 ? <Badge color="#E63946">{days}d left</Badge> : days <= 30 ? <Badge color="#F4A261">{days}d left</Badge> : <Badge color="#2A9D8F">Open</Badge>) : <Badge color="#6A4C93">TBA</Badge>}
           </div>
-          <h3 style={{ fontSize: 14, fontWeight: 600, margin: "0 0 4px", lineHeight: 1.4,
-            fontFamily: "'Source Serif 4', Georgia, serif", color: "#1a1a1a" }}>
-            {conf.fullName}
-          </h3>
-          <p style={{ fontSize: 12, color: "#777", margin: "0 0 2px", fontFamily: "'JetBrains Mono', monospace" }}>
-            📍 {conf.location}
-          </p>
-          <p style={{ fontSize: 12, color: "#555", margin: "0 0 2px", fontFamily: "'JetBrains Mono', monospace" }}>
-            📅 {conf.dates}
-          </p>
-          {conf.cfpDeadline && (
-            <p style={{ fontSize: 11, color: isPast ? "#999" : "#E63946", margin: "0 0 2px",
-              fontFamily: "'JetBrains Mono', monospace", textDecoration: isPast ? "line-through" : "none" }}>
-              ✏️ Submission deadline: {formatDate(conf.cfpDeadline)}
-            </p>
-          )}
-          {conf.cfpNote && (
-            <p style={{ fontSize: 11, color: "#aaa", margin: "0 0 4px", fontFamily: "'JetBrains Mono', monospace", fontStyle: "italic" }}>
-              {conf.cfpNote}
-            </p>
-          )}
-          {conf.url && (
-            <a href={conf.url} target="_blank" rel="noopener noreferrer"
-              style={{ fontSize: 11, color: "#457B9D", fontFamily: "'JetBrains Mono', monospace" }}>
-              Visit website →
-            </a>
-          )}
+          <h3 style={{ fontSize: 14, fontWeight: 600, margin: "0 0 4px", lineHeight: 1.4, fontFamily: "'Source Serif 4', Georgia, serif", color: "#1a1a1a" }}>{conf.fullName}</h3>
+          <p style={{ fontSize: 12, color: "#777", margin: "0 0 2px", fontFamily: "'JetBrains Mono', monospace" }}>📍 {conf.location}</p>
+          <p style={{ fontSize: 12, color: "#555", margin: "0 0 2px", fontFamily: "'JetBrains Mono', monospace" }}>📅 {conf.dates}</p>
+          {conf.cfpDeadline && <p style={{ fontSize: 11, color: isPast ? "#999" : "#E63946", margin: "0 0 2px", fontFamily: "'JetBrains Mono', monospace", textDecoration: isPast ? "line-through" : "none" }}>✏️ Submission deadline: {formatDate(conf.cfpDeadline)}</p>}
+          {conf.cfpNote && <p style={{ fontSize: 11, color: "#aaa", margin: "0 0 4px", fontFamily: "'JetBrains Mono', monospace", fontStyle: "italic" }}>{conf.cfpNote}</p>}
+          {conf.url && <a href={conf.url} target="_blank" rel="noopener noreferrer" style={{ fontSize: 11, color: "#457B9D", fontFamily: "'JetBrains Mono', monospace" }}>Visit website →</a>}
         </div>
+        {onDelete && <button onClick={() => onDelete(conf.id)} style={{ background: "none", border: "none", cursor: "pointer", color: "#ccc", fontSize: 16, padding: "4px 8px", alignSelf: "flex-start" }}
+          onMouseEnter={e => e.target.style.color = "#E63946"} onMouseLeave={e => e.target.style.color = "#ccc"}>×</button>}
       </div>
     </div>
   );
@@ -219,50 +106,27 @@ function CfpCard({ cfp, onDelete }) {
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start" }}>
         <div style={{ flex: 1 }}>
           <div style={{ display: "flex", gap: 6, alignItems: "center", marginBottom: 6, flexWrap: "wrap" }}>
-            <Badge color={cfp.type === "Special Issue" ? "#2A9D8F" : cfp.type === "Workshop" ? "#6A4C93" : "#E76F51"}>
-              {cfp.type}
-            </Badge>
+            <Badge color={cfp.type === "Special Issue" ? "#2A9D8F" : cfp.type === "Workshop" ? "#6A4C93" : "#E76F51"}>{cfp.type}</Badge>
             {isPast && <Badge color="#999">Closed</Badge>}
             {!isPast && days !== null && days <= 30 && days > 0 && <Badge color="#E63946">{days}d left</Badge>}
           </div>
-          <h3 style={{ fontSize: 14, fontWeight: 600, margin: "0 0 4px", lineHeight: 1.4,
-            fontFamily: "'Source Serif 4', Georgia, serif", color: "#1a1a1a" }}>{cfp.title}</h3>
-          {cfp.venue && (
-            <p style={{ fontSize: 12, color: "#777", margin: "0 0 2px", fontFamily: "'JetBrains Mono', monospace" }}>{cfp.venue}</p>
-          )}
-          {cfp.deadline && (
-            <p style={{ fontSize: 11, color: isPast ? "#999" : "#E63946", margin: "0 0 4px",
-              fontFamily: "'JetBrains Mono', monospace" }}>
-              ✏️ Submission deadline: {formatDate(cfp.deadline)}
-            </p>
-          )}
-          {cfp.url && (
-            <a href={cfp.url} target="_blank" rel="noopener noreferrer"
-              style={{ fontSize: 11, color: "#457B9D", fontFamily: "'JetBrains Mono', monospace" }}>
-              View details →
-            </a>
-          )}
+          <h3 style={{ fontSize: 14, fontWeight: 600, margin: "0 0 4px", lineHeight: 1.4, fontFamily: "'Source Serif 4', Georgia, serif", color: "#1a1a1a" }}>{cfp.title}</h3>
+          {cfp.venue && <p style={{ fontSize: 12, color: "#777", margin: "0 0 2px", fontFamily: "'JetBrains Mono', monospace" }}>{cfp.venue}</p>}
+          {cfp.deadline && <p style={{ fontSize: 11, color: isPast ? "#999" : "#E63946", margin: "0 0 4px", fontFamily: "'JetBrains Mono', monospace" }}>✏️ Submission deadline: {formatDate(cfp.deadline)}</p>}
+          {cfp.url && <a href={cfp.url} target="_blank" rel="noopener noreferrer" style={{ fontSize: 11, color: "#457B9D", fontFamily: "'JetBrains Mono', monospace" }}>View details →</a>}
         </div>
-        <button onClick={() => onDelete(cfp.id)}
-          style={{ background: "none", border: "none", cursor: "pointer", color: "#ccc", fontSize: 16, padding: "4px 8px" }}
-          onMouseEnter={e => e.target.style.color = "#E63946"}
-          onMouseLeave={e => e.target.style.color = "#ccc"}>×</button>
+        <button onClick={() => onDelete(cfp.id)} style={{ background: "none", border: "none", cursor: "pointer", color: "#ccc", fontSize: 16, padding: "4px 8px" }}
+          onMouseEnter={e => e.target.style.color = "#E63946"} onMouseLeave={e => e.target.style.color = "#ccc"}>×</button>
       </div>
     </div>
   );
 }
 
 export default function JournalTracker() {
-  const [journals, setJournals] = useState(() => {
-    try { const s = localStorage.getItem("jcm-journals"); return s ? JSON.parse(s) : DEFAULT_JOURNALS; } catch { return DEFAULT_JOURNALS; }
-  });
+  const [journals, setJournals] = useState(() => { try { const s = localStorage.getItem("jcm-journals"); return s ? JSON.parse(s) : DEFAULT_JOURNALS; } catch { return DEFAULT_JOURNALS; } });
   const [articles, setArticles] = useState([]);
-  const [conferences, setConferences] = useState(() => {
-    try { const s = localStorage.getItem("jcm-conferences-v3"); return s ? JSON.parse(s) : DEFAULT_CONFERENCES; } catch { return DEFAULT_CONFERENCES; }
-  });
-  const [cfps, setCfps] = useState(() => {
-    try { const s = localStorage.getItem("jcm-cfps-v3"); return s ? JSON.parse(s) : []; } catch { return []; }
-  });
+  const [conferences, setConferences] = useState(() => { try { const s = localStorage.getItem("jcm-conf-v4"); return s ? JSON.parse(s) : DEFAULT_CONFERENCES; } catch { return DEFAULT_CONFERENCES; } });
+  const [cfps, setCfps] = useState(() => { try { const s = localStorage.getItem("jcm-cfps-v4"); return s ? JSON.parse(s) : []; } catch { return []; } });
   const [loading, setLoading] = useState(false);
   const [tab, setTab] = useState("Feed");
   const [searchTerm, setSearchTerm] = useState("");
@@ -270,8 +134,10 @@ export default function JournalTracker() {
   const [timeRange, setTimeRange] = useState("30");
   const [showAddJournal, setShowAddJournal] = useState(false);
   const [showAddCfp, setShowAddCfp] = useState(false);
+  const [showAddConf, setShowAddConf] = useState(false);
   const [newJournal, setNewJournal] = useState({ name: "", issn: "" });
   const [newCfp, setNewCfp] = useState({ title: "", type: "Special Issue", venue: "", deadline: "", url: "" });
+  const [newConf, setNewConf] = useState({ name: "", fullName: "", location: "", dates: "", cfpDeadline: "", cfpNote: "", url: "" });
   const [fetchError, setFetchError] = useState("");
   const [stats, setStats] = useState({});
   const [confFilter, setConfFilter] = useState("all");
@@ -279,8 +145,8 @@ export default function JournalTracker() {
   const hasFetched = useRef(false);
 
   useEffect(() => { try { localStorage.setItem("jcm-journals", JSON.stringify(journals)); } catch {} }, [journals]);
-  useEffect(() => { try { localStorage.setItem("jcm-conferences-v3", JSON.stringify(conferences)); } catch {} }, [conferences]);
-  useEffect(() => { try { localStorage.setItem("jcm-cfps-v3", JSON.stringify(cfps)); } catch {} }, [cfps]);
+  useEffect(() => { try { localStorage.setItem("jcm-conf-v4", JSON.stringify(conferences)); } catch {} }, [conferences]);
+  useEffect(() => { try { localStorage.setItem("jcm-cfps-v4", JSON.stringify(cfps)); } catch {} }, [cfps]);
 
   const fetchArticles = useCallback(async () => {
     setLoading(true); setFetchError("");
@@ -290,14 +156,13 @@ export default function JournalTracker() {
     for (const journal of journals) {
       try {
         const issns = journal.issn.split(",").map(s => s.trim()).join("|");
-        const url = `https://api.openalex.org/works?filter=primary_location.source.issn:${issns},from_publication_date:${dateStr}&sort=publication_date:desc&per_page=25&mailto=jcm-scholarwire@example.com`;
-        const res = await fetch(url); if (!res.ok) continue;
+        const res = await fetch(`https://api.openalex.org/works?filter=primary_location.source.issn:${issns},from_publication_date:${dateStr}&sort=publication_date:desc&per_page=25&mailto=jcm-scholarwire@example.com`);
+        if (!res.ok) continue;
         const data = await res.json();
         journalStats[journal.name] = data.meta?.count || 0;
         (data.results || []).forEach(work => {
           allArticles.push({
-            id: work.id, title: work.title,
-            doi: work.doi?.replace("https://doi.org/", ""),
+            id: work.id, title: work.title, doi: work.doi?.replace("https://doi.org/", ""),
             url: work.primary_location?.landing_page_url || work.doi,
             publication_date: work.publication_date, journal: journal.name,
             journal_short: journal.name.length > 25 ? journal.name.substring(0, 22) + "…" : journal.name,
@@ -318,37 +183,15 @@ export default function JournalTracker() {
 
   const filteredArticles = articles.filter(a => {
     if (filterJournal !== "All" && a.journal !== filterJournal) return false;
-    if (searchTerm) {
-      const s = searchTerm.toLowerCase();
-      return (a.title || "").toLowerCase().includes(s) || (a.authors || []).some(au => au.toLowerCase().includes(s)) || (a.concepts || []).some(c => c.toLowerCase().includes(s));
-    }
+    if (searchTerm) { const s = searchTerm.toLowerCase(); return (a.title || "").toLowerCase().includes(s) || (a.authors || []).some(au => au.toLowerCase().includes(s)) || (a.concepts || []).some(c => c.toLowerCase().includes(s)); }
     return true;
   });
+  const filteredConfs = conferences.filter(c => { if (confFilter === "open") return !c.cfpDeadline || new Date(c.cfpDeadline) >= new Date(); if (confFilter === "closed") return c.cfpDeadline && new Date(c.cfpDeadline) < new Date(); return true; });
+  const filteredCfps = cfps.filter(c => { if (cfpFilter === "upcoming") return !c.deadline || new Date(c.deadline) >= new Date(); if (cfpFilter === "past") return c.deadline && new Date(c.deadline) < new Date(); return true; });
 
-  const filteredConfs = conferences.filter(c => {
-    if (confFilter === "open") return !c.cfpDeadline || new Date(c.cfpDeadline) >= new Date();
-    if (confFilter === "closed") return c.cfpDeadline && new Date(c.cfpDeadline) < new Date();
-    return true;
-  });
-
-  const filteredCfps = cfps.filter(c => {
-    if (cfpFilter === "upcoming") return !c.deadline || new Date(c.deadline) >= new Date();
-    if (cfpFilter === "past") return c.deadline && new Date(c.deadline) < new Date();
-    return true;
-  });
-
-  const addJournal = () => {
-    if (!newJournal.name || !newJournal.issn) return;
-    const colors = ["#264653","#E76F51","#606C38","#BC6C25","#023047","#8338EC","#FF006E","#3A86FF"];
-    setJournals([...journals, { ...newJournal, color: colors[journals.length % colors.length] }]);
-    setNewJournal({ name: "", issn: "" }); setShowAddJournal(false);
-  };
-
-  const addCfp = () => {
-    if (!newCfp.title) return;
-    setCfps([...cfps, { ...newCfp, id: Date.now() }]);
-    setNewCfp({ title: "", type: "Special Issue", venue: "", deadline: "", url: "" }); setShowAddCfp(false);
-  };
+  const addJournal = () => { if (!newJournal.name || !newJournal.issn) return; const colors = ["#264653","#E76F51","#606C38","#BC6C25","#023047","#8338EC","#FF006E","#3A86FF"]; setJournals([...journals, { ...newJournal, color: colors[journals.length % colors.length] }]); setNewJournal({ name: "", issn: "" }); setShowAddJournal(false); };
+  const addCfp = () => { if (!newCfp.title) return; setCfps([...cfps, { ...newCfp, id: Date.now() }]); setNewCfp({ title: "", type: "Special Issue", venue: "", deadline: "", url: "" }); setShowAddCfp(false); };
+  const addConf = () => { if (!newConf.name || !newConf.fullName) return; setConferences([...conferences, { ...newConf, id: Date.now() }]); setNewConf({ name: "", fullName: "", location: "", dates: "", cfpDeadline: "", cfpNote: "", url: "" }); setShowAddConf(false); };
 
   const inputStyle = { width: "100%", padding: "8px 10px", fontSize: 13, border: "1px solid #ddd", borderRadius: 3, fontFamily: "'JetBrains Mono', monospace", boxSizing: "border-box", outline: "none" };
   const labelStyle = { fontSize: 11, fontWeight: 700, color: "#999", marginBottom: 4, display: "block", fontFamily: "'JetBrains Mono', monospace", textTransform: "uppercase", letterSpacing: "0.5px" };
@@ -391,16 +234,11 @@ export default function JournalTracker() {
 
       <nav style={{ display: "flex", gap: 0, borderBottom: "1px solid #eee" }}>
         {TABS.map(t => (
-          <button key={t} onClick={() => setTab(t)} style={{
-            background: "none", border: "none", borderBottom: tab === t ? "2px solid #E63946" : "2px solid transparent",
-            padding: "12px 20px", cursor: "pointer", fontSize: 12, fontWeight: tab === t ? 700 : 500,
-            color: tab === t ? "#1a1a1a" : "#999", fontFamily: "'JetBrains Mono', monospace",
-            textTransform: "uppercase", letterSpacing: "0.5px", transition: "all 0.15s",
-          }}>{t}</button>
+          <button key={t} onClick={() => setTab(t)} style={{ background: "none", border: "none", borderBottom: tab === t ? "2px solid #E63946" : "2px solid transparent", padding: "12px 20px", cursor: "pointer", fontSize: 12, fontWeight: tab === t ? 700 : 500, color: tab === t ? "#1a1a1a" : "#999", fontFamily: "'JetBrains Mono', monospace", textTransform: "uppercase", letterSpacing: "0.5px", transition: "all 0.15s" }}>{t}</button>
         ))}
       </nav>
 
-      {/* FEED */}
+      {/* ──── FEED ──── */}
       {tab === "Feed" && (
         <div style={{ animation: "fadeIn 0.3s ease" }}>
           <div style={{ display: "flex", gap: 10, padding: "14px 0", borderBottom: "1px solid #eee", flexWrap: "wrap", alignItems: "center" }}>
@@ -421,7 +259,7 @@ export default function JournalTracker() {
         </div>
       )}
 
-      {/* JOURNALS */}
+      {/* ──── JOURNALS ──── */}
       {tab === "Journals" && (
         <div style={{ animation: "fadeIn 0.3s ease", padding: "16px 0" }}>
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 16 }}>
@@ -432,10 +270,10 @@ export default function JournalTracker() {
             <div style={{ background: "#fafafa", border: "1px solid #eee", borderRadius: 4, padding: 16, marginBottom: 16 }}>
               <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
                 <div style={{ flex: "1 1 250px" }}><label style={labelStyle}>Journal Name</label><input value={newJournal.name} onChange={e => setNewJournal({ ...newJournal, name: e.target.value })} placeholder="e.g. Journalism & Mass Communication Quarterly" style={inputStyle} /></div>
-                <div style={{ flex: "0 1 180px" }}><label style={labelStyle}>ISSN</label><input value={newJournal.issn} onChange={e => setNewJournal({ ...newJournal, issn: e.target.value })} placeholder="e.g. 1077-6990" style={inputStyle} /></div>
+                <div style={{ flex: "0 1 180px" }}><label style={labelStyle}>ISSN (print,online)</label><input value={newJournal.issn} onChange={e => setNewJournal({ ...newJournal, issn: e.target.value })} placeholder="e.g. 1077-6990,2161-4326" style={inputStyle} /></div>
                 <div style={{ display: "flex", alignItems: "flex-end", gap: 6 }}><button onClick={addJournal} style={btnPrimary}>Add</button><button onClick={() => setShowAddJournal(false)} style={btnSecondary}>Cancel</button></div>
               </div>
-              <p style={{ fontSize: 11, color: "#aaa", marginTop: 8, fontFamily: "'JetBrains Mono', monospace" }}>Find ISSNs at <a href="https://portal.issn.org" target="_blank" rel="noopener noreferrer" style={{ color: "#E63946" }}>portal.issn.org</a>. After adding, hit Refresh.</p>
+              <p style={{ fontSize: 11, color: "#aaa", marginTop: 8, fontFamily: "'JetBrains Mono', monospace" }}>Find ISSNs at <a href="https://portal.issn.org" target="_blank" rel="noopener noreferrer" style={{ color: "#E63946" }}>portal.issn.org</a>. Use both print & online ISSNs separated by comma for best results.</p>
             </div>
           )}
           {journals.map(j => (
@@ -455,28 +293,48 @@ export default function JournalTracker() {
         </div>
       )}
 
-      {/* CONFERENCES */}
+      {/* ──── CONFERENCES ──── */}
       {tab === "Conferences" && (
         <div style={{ animation: "fadeIn 0.3s ease", padding: "16px 0" }}>
-          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 12 }}>
+          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 12, flexWrap: "wrap", gap: 10 }}>
             <div style={{ display: "flex", gap: 6 }}>
               {["all", "open", "closed"].map(f => (
                 <button key={f} onClick={() => setConfFilter(f)} style={filterBtn(confFilter === f)}>{f === "open" ? "CFP Open" : f === "closed" ? "CFP Closed" : "All"}</button>
               ))}
             </div>
-            <p style={{ fontSize: 11, color: "#aaa", margin: 0, fontFamily: "'JetBrains Mono', monospace" }}>
-              {conferences.length} conferences tracked
-            </p>
+            <button onClick={() => setShowAddConf(!showAddConf)} style={btnPrimary}>+ Add Conference</button>
           </div>
+
+          {showAddConf && (
+            <div style={{ background: "#fafafa", border: "1px solid #eee", borderRadius: 4, padding: 16, marginBottom: 16 }}>
+              <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+                <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
+                  <div style={{ flex: "0 1 100px" }}><label style={labelStyle}>Short Name</label><input value={newConf.name} onChange={e => setNewConf({ ...newConf, name: e.target.value })} placeholder="e.g. WAPOR" style={inputStyle} /></div>
+                  <div style={{ flex: "1 1 300px" }}><label style={labelStyle}>Full Name</label><input value={newConf.fullName} onChange={e => setNewConf({ ...newConf, fullName: e.target.value })} placeholder="e.g. World Association for Public Opinion Research" style={inputStyle} /></div>
+                </div>
+                <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
+                  <div style={{ flex: "1 1 200px" }}><label style={labelStyle}>Location</label><input value={newConf.location} onChange={e => setNewConf({ ...newConf, location: e.target.value })} placeholder="e.g. Berlin, Germany" style={inputStyle} /></div>
+                  <div style={{ flex: "0 1 160px" }}><label style={labelStyle}>Event Dates</label><input value={newConf.dates} onChange={e => setNewConf({ ...newConf, dates: e.target.value })} placeholder="e.g. Jun 10–13, 2026" style={inputStyle} /></div>
+                </div>
+                <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
+                  <div style={{ flex: "0 1 160px" }}><label style={labelStyle}>CFP Deadline</label><input type="date" value={newConf.cfpDeadline} onChange={e => setNewConf({ ...newConf, cfpDeadline: e.target.value })} style={inputStyle} /></div>
+                  <div style={{ flex: "1 1 250px" }}><label style={labelStyle}>CFP Note</label><input value={newConf.cfpNote} onChange={e => setNewConf({ ...newConf, cfpNote: e.target.value })} placeholder="e.g. Full papers, max 8000 words" style={inputStyle} /></div>
+                </div>
+                <div><label style={labelStyle}>URL (optional)</label><input value={newConf.url} onChange={e => setNewConf({ ...newConf, url: e.target.value })} placeholder="https://..." style={inputStyle} /></div>
+                <div style={{ display: "flex", gap: 6 }}><button onClick={addConf} style={btnPrimary}>Add Conference</button><button onClick={() => setShowAddConf(false)} style={btnSecondary}>Cancel</button></div>
+              </div>
+            </div>
+          )}
+
           {filteredConfs.sort((a, b) => {
             const da = a.cfpDeadline ? new Date(a.cfpDeadline) : new Date("2099-01-01");
             const db = b.cfpDeadline ? new Date(b.cfpDeadline) : new Date("2099-01-01");
             return da - db;
-          }).map(c => <ConferenceCard key={c.id} conf={c} />)}
+          }).map(c => <ConferenceCard key={c.id} conf={c} onDelete={(id) => setConferences(conferences.filter(x => x.id !== id))} />)}
         </div>
       )}
 
-      {/* CFPs */}
+      {/* ──── CFPs ──── */}
       {tab === "CFPs" && (
         <div style={{ animation: "fadeIn 0.3s ease", padding: "16px 0" }}>
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 12, flexWrap: "wrap", gap: 10 }}>
@@ -487,9 +345,8 @@ export default function JournalTracker() {
             </div>
             <button onClick={() => setShowAddCfp(!showAddCfp)} style={btnPrimary}>+ Add CFP</button>
           </div>
-          <p style={{ fontSize: 12, color: "#999", margin: "0 0 12px", fontFamily: "'JetBrains Mono', monospace" }}>
-            Track special issue calls, workshop CFPs, and other submission opportunities.
-          </p>
+          <p style={{ fontSize: 12, color: "#999", margin: "0 0 12px", fontFamily: "'JetBrains Mono', monospace" }}>Track special issue calls, workshop CFPs, and other submission opportunities.</p>
+
           {showAddCfp && (
             <div style={{ background: "#fafafa", border: "1px solid #eee", borderRadius: 4, padding: 16, marginBottom: 16 }}>
               <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
@@ -508,16 +365,16 @@ export default function JournalTracker() {
               </div>
             </div>
           )}
+
           {filteredCfps.length === 0 && (
             <div style={{ textAlign: "center", padding: "40px 20px", color: "#bbb", fontFamily: "'JetBrains Mono', monospace", fontSize: 12 }}>
               <div style={{ fontSize: 32, marginBottom: 10 }}>📭</div>
-              No {cfpFilter !== "all" ? cfpFilter : ""} CFPs tracked yet. Add special issue calls, workshop CFPs, and other opportunities above.
+              No {cfpFilter !== "all" ? cfpFilter : ""} CFPs yet. Add special issue calls, workshop CFPs, and other opportunities above.
             </div>
           )}
-          {filteredCfps.sort((a, b) => {
-            if (!a.deadline) return 1; if (!b.deadline) return -1;
-            return new Date(a.deadline) - new Date(b.deadline);
-          }).map(c => <CfpCard key={c.id} cfp={c} onDelete={(id) => setCfps(cfps.filter(x => x.id !== id))} />)}
+
+          {filteredCfps.sort((a, b) => { if (!a.deadline) return 1; if (!b.deadline) return -1; return new Date(a.deadline) - new Date(b.deadline); })
+            .map(c => <CfpCard key={c.id} cfp={c} onDelete={(id) => setCfps(cfps.filter(x => x.id !== id))} />)}
         </div>
       )}
 

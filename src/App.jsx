@@ -10,6 +10,63 @@ const DEFAULT_JOURNALS = [
   { name: "Journal of Computer-Mediated Communication", issn: "1083-6101", color: "#1D3557" },
 ];
 
+const DEFAULT_OPPORTUNITIES = [
+  {
+    id: 1, type: "Conference", title: "83rd MPSA Annual Conference",
+    venue: "Palmer House Hilton, Chicago, IL",
+    deadline: "2026-04-08", dates: "Apr 23–26, 2026",
+    url: "https://www.mpsanet.org/",
+  },
+  {
+    id: 2, type: "Conference", title: "ICWSM 2026 — 20th Intl AAAI Conference on Web and Social Media",
+    venue: "Los Angeles, California",
+    deadline: "2026-05-15", dates: "May 27–29, 2026",
+    url: "https://www.icwsm.org/2026/",
+  },
+  {
+    id: 3, type: "Conference", title: "76th ICA Annual Conference",
+    venue: "Cape Town, South Africa",
+    deadline: "2026-05-04", dates: "Jun 4–8, 2026",
+    url: "https://www.icahdq.org/mpage/ICA26",
+  },
+  {
+    id: 4, type: "Conference", title: "#SMSociety 2026 — Intl Conference on Social Media & Society",
+    venue: "University of Glasgow, Glasgow, UK",
+    deadline: "2026-06-15", dates: "Jul 13–15, 2026",
+    url: "https://socialmediaandsociety.org/smsociety-2026/",
+  },
+  {
+    id: 5, type: "Conference", title: "IC2S2 2026 — 12th Intl Conference on Computational Social Science",
+    venue: "University of Vermont, Burlington, VT",
+    deadline: "2026-06-01", dates: "Jul 28–31, 2026",
+    url: "https://ic2s2-2026.org/",
+  },
+  {
+    id: 6, type: "Conference", title: "2026 AEJMC Annual Conference",
+    venue: "New Orleans Marriott, New Orleans, LA",
+    deadline: "2026-06-01", dates: "Aug 5–8, 2026",
+    url: "https://www.aejmc.org/aejmc-events/conference",
+  },
+  {
+    id: 7, type: "Conference", title: "122nd APSA Annual Meeting & Exhibition",
+    venue: "Boston, Massachusetts",
+    deadline: "2026-07-01", dates: "Sep 3–6, 2026",
+    url: "https://connect.apsanet.org/apsa2026/",
+  },
+  {
+    id: 8, type: "Conference", title: "IJPP Annual Conference (Details TBA)",
+    venue: "Typically October — check journal website",
+    deadline: "", dates: "Oct 2026 (TBA)",
+    url: "https://journals.sagepub.com/home/hij/",
+  },
+  {
+    id: 9, type: "Conference", title: "112th NCA Annual Convention — Move/ment(s)",
+    venue: "Sheraton New Orleans, New Orleans, LA",
+    deadline: "2026-09-01", dates: "Nov 19–22, 2026",
+    url: "https://www.natcom.org/nca-112th-annual-convention/",
+  },
+];
+
 const TABS = ["Feed", "Journals", "Opportunities"];
 
 function formatDate(dateStr) {
@@ -95,31 +152,41 @@ function ArticleCard({ article, journalColor }) {
 
 function OpportunityCard({ opp, onDelete }) {
   const isExpired = opp.deadline && new Date(opp.deadline) < new Date();
+  const daysLeft = opp.deadline ? Math.ceil((new Date(opp.deadline) - new Date()) / (1000 * 60 * 60 * 24)) : null;
   return (
     <div style={{ borderBottom: "1px solid #eee", padding: "16px 0", opacity: isExpired ? 0.45 : 1 }}>
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start" }}>
         <div style={{ flex: 1 }}>
           <div style={{ display: "flex", gap: 6, alignItems: "center", marginBottom: 6, flexWrap: "wrap" }}>
-            <Badge color={opp.type === "Special Issue" ? "#2A9D8F" : opp.type === "Conference" ? "#457B9D" : "#6A4C93"}>
+            <Badge color={opp.type === "Special Issue" ? "#2A9D8F" : opp.type === "Conference" ? "#457B9D" : opp.type === "Workshop" ? "#6A4C93" : "#E76F51"}>
               {opp.type}
             </Badge>
-            {isExpired && <Badge color="#999">Expired</Badge>}
-            {opp.deadline && (
-              <span style={{ fontSize: 11, color: "#999", fontFamily: "'JetBrains Mono', monospace" }}>
-                Deadline: {formatDate(opp.deadline)}
-              </span>
+            {isExpired && <Badge color="#999">Past</Badge>}
+            {!isExpired && daysLeft !== null && daysLeft <= 30 && daysLeft > 0 && (
+              <Badge color="#E63946">{daysLeft}d left</Badge>
             )}
           </div>
           <h3 style={{ fontSize: 14, fontWeight: 600, margin: "0 0 4px", lineHeight: 1.4,
             fontFamily: "'Source Serif 4', Georgia, serif", color: "#1a1a1a" }}>{opp.title}</h3>
           {opp.venue && (
             <p style={{ fontSize: 12, color: "#777", margin: "0 0 4px", fontFamily: "'JetBrains Mono', monospace" }}>
-              {opp.venue}
+              📍 {opp.venue}
+            </p>
+          )}
+          {opp.dates && (
+            <p style={{ fontSize: 12, color: "#555", margin: "0 0 4px", fontFamily: "'JetBrains Mono', monospace" }}>
+              📅 {opp.dates}
+            </p>
+          )}
+          {opp.deadline && (
+            <p style={{ fontSize: 11, color: isExpired ? "#999" : "#E63946", margin: "0 0 4px",
+              fontFamily: "'JetBrains Mono', monospace" }}>
+              ⏰ Registration deadline: {formatDate(opp.deadline)}
             </p>
           )}
           {opp.url && (
             <a href={opp.url} target="_blank" rel="noopener noreferrer"
-              style={{ fontSize: 11, color: "#E63946", fontFamily: "'JetBrains Mono', monospace" }}>
+              style={{ fontSize: 11, color: "#457B9D", fontFamily: "'JetBrains Mono', monospace" }}>
               View details →
             </a>
           )}
@@ -144,9 +211,9 @@ export default function JournalTracker() {
   const [articles, setArticles] = useState([]);
   const [opportunities, setOpportunities] = useState(() => {
     try {
-      const saved = localStorage.getItem("jcm-opportunities");
-      return saved ? JSON.parse(saved) : [];
-    } catch { return []; }
+      const saved = localStorage.getItem("jcm-opportunities-v2");
+      return saved ? JSON.parse(saved) : DEFAULT_OPPORTUNITIES;
+    } catch { return DEFAULT_OPPORTUNITIES; }
   });
   const [loading, setLoading] = useState(false);
   const [tab, setTab] = useState("Feed");
@@ -156,9 +223,10 @@ export default function JournalTracker() {
   const [showAddJournal, setShowAddJournal] = useState(false);
   const [showAddOpp, setShowAddOpp] = useState(false);
   const [newJournal, setNewJournal] = useState({ name: "", issn: "" });
-  const [newOpp, setNewOpp] = useState({ title: "", type: "Special Issue", venue: "", deadline: "", url: "" });
+  const [newOpp, setNewOpp] = useState({ title: "", type: "Special Issue", venue: "", deadline: "", dates: "", url: "" });
   const [fetchError, setFetchError] = useState("");
   const [stats, setStats] = useState({});
+  const [oppFilter, setOppFilter] = useState("upcoming");
   const hasFetched = useRef(false);
 
   useEffect(() => {
@@ -166,7 +234,7 @@ export default function JournalTracker() {
   }, [journals]);
 
   useEffect(() => {
-    try { localStorage.setItem("jcm-opportunities", JSON.stringify(opportunities)); } catch {}
+    try { localStorage.setItem("jcm-opportunities-v2", JSON.stringify(opportunities)); } catch {}
   }, [opportunities]);
 
   const fetchArticles = useCallback(async () => {
@@ -235,6 +303,16 @@ export default function JournalTracker() {
     return true;
   });
 
+  const filteredOpps = opportunities.filter(opp => {
+    if (oppFilter === "upcoming") {
+      return !opp.deadline || new Date(opp.deadline) >= new Date();
+    }
+    if (oppFilter === "past") {
+      return opp.deadline && new Date(opp.deadline) < new Date();
+    }
+    return true;
+  });
+
   const addJournal = () => {
     if (!newJournal.name || !newJournal.issn) return;
     const colors = ["#264653","#E76F51","#606C38","#BC6C25","#023047","#8338EC","#FF006E","#3A86FF"];
@@ -249,7 +327,7 @@ export default function JournalTracker() {
   const addOpp = () => {
     if (!newOpp.title) return;
     setOpportunities([...opportunities, { ...newOpp, id: Date.now() }]);
-    setNewOpp({ title: "", type: "Special Issue", venue: "", deadline: "", url: "" });
+    setNewOpp({ title: "", type: "Special Issue", venue: "", deadline: "", dates: "", url: "" });
     setShowAddOpp(false);
   };
 
@@ -277,6 +355,7 @@ export default function JournalTracker() {
   const totalArticles = filteredArticles.length;
   const newThisWeek = articles.filter(a => daysAgo(a.publication_date) <= 7).length;
   const oaCount = articles.filter(a => a.open_access).length;
+  const upcomingCount = opportunities.filter(o => !o.deadline || new Date(o.deadline) >= new Date()).length;
 
   return (
     <div style={{ fontFamily: "'Source Serif 4', Georgia, serif",
@@ -315,7 +394,7 @@ export default function JournalTracker() {
           { label: "New this week", value: newThisWeek },
           { label: "Open Access", value: oaCount },
           { label: "Journals", value: journals.length },
-          { label: "Opportunities", value: opportunities.length },
+          { label: "Upcoming", value: upcomingCount },
         ].map((s, i) => (
           <div key={i} style={{ flex: 1, textAlign: "center",
             borderRight: i < 4 ? "1px solid #eee" : "none" }}>
@@ -337,7 +416,7 @@ export default function JournalTracker() {
             color: tab === t ? "#1a1a1a" : "#999",
             fontFamily: "'JetBrains Mono', monospace",
             textTransform: "uppercase", letterSpacing: "0.5px", transition: "all 0.15s",
-          }}>{t}</button>
+          }}>{t}{t === "Opportunities" && upcomingCount > 0 ? ` (${upcomingCount})` : ""}</button>
         ))}
       </nav>
 
@@ -407,7 +486,7 @@ export default function JournalTracker() {
                 </div>
               </div>
               <p style={{ fontSize: 11, color: "#aaa", marginTop: 8, fontFamily: "'JetBrains Mono', monospace" }}>
-                Tip: Find ISSNs at <a href="https://portal.issn.org" target="_blank" rel="noopener noreferrer" style={{ color: "#E63946" }}>portal.issn.org</a> or on the journal's homepage. After adding, hit Refresh to fetch articles.
+                Tip: Find ISSNs at <a href="https://portal.issn.org" target="_blank" rel="noopener noreferrer" style={{ color: "#E63946" }}>portal.issn.org</a> or on the journal's homepage. After adding, hit Refresh.
               </p>
             </div>
           )}
@@ -438,12 +517,21 @@ export default function JournalTracker() {
 
       {tab === "Opportunities" && (
         <div style={{ animation: "fadeIn 0.3s ease", padding: "16px 0" }}>
-          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 16 }}>
-            <p style={{ fontSize: 12, color: "#999", margin: 0, fontFamily: "'JetBrains Mono', monospace" }}>
-              Track CFPs, special issues, and workshop deadlines. Add them manually or paste URLs.
-            </p>
-            <button onClick={() => setShowAddOpp(!showAddOpp)} style={btnPrimary}>+ Add Opportunity</button>
+          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 12, flexWrap: "wrap", gap: 10 }}>
+            <div style={{ display: "flex", gap: 6 }}>
+              {["upcoming", "past", "all"].map(f => (
+                <button key={f} onClick={() => setOppFilter(f)} style={{
+                  ...btnSecondary, padding: "5px 12px", fontSize: 11,
+                  background: oppFilter === f ? "#1a1a1a" : "#fff",
+                  color: oppFilter === f ? "#fff" : "#999",
+                  borderColor: oppFilter === f ? "#1a1a1a" : "#ddd",
+                  textTransform: "capitalize",
+                }}>{f}</button>
+              ))}
+            </div>
+            <button onClick={() => setShowAddOpp(!showAddOpp)} style={btnPrimary}>+ Add</button>
           </div>
+
           {showAddOpp && (
             <div style={{ background: "#fafafa", border: "1px solid #eee", borderRadius: 4, padding: 16, marginBottom: 16 }}>
               <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
@@ -453,7 +541,7 @@ export default function JournalTracker() {
                     placeholder="e.g. Special Issue on Platform Governance" style={inputStyle} />
                 </div>
                 <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
-                  <div style={{ flex: "0 1 160px" }}>
+                  <div style={{ flex: "0 1 140px" }}>
                     <label style={labelStyle}>Type</label>
                     <select value={newOpp.type} onChange={e => setNewOpp({ ...newOpp, type: e.target.value })}
                       style={{ ...inputStyle, cursor: "pointer" }}>
@@ -464,12 +552,17 @@ export default function JournalTracker() {
                       <option>Other</option>
                     </select>
                   </div>
-                  <div style={{ flex: "1 1 200px" }}>
-                    <label style={labelStyle}>Venue / Journal</label>
+                  <div style={{ flex: "1 1 180px" }}>
+                    <label style={labelStyle}>Venue / Location</label>
                     <input value={newOpp.venue} onChange={e => setNewOpp({ ...newOpp, venue: e.target.value })}
-                      placeholder="e.g. New Media & Society" style={inputStyle} />
+                      placeholder="e.g. Chicago, IL" style={inputStyle} />
                   </div>
                   <div style={{ flex: "0 1 160px" }}>
+                    <label style={labelStyle}>Event Dates</label>
+                    <input value={newOpp.dates} onChange={e => setNewOpp({ ...newOpp, dates: e.target.value })}
+                      placeholder="e.g. Jun 4–8, 2026" style={inputStyle} />
+                  </div>
+                  <div style={{ flex: "0 1 150px" }}>
                     <label style={labelStyle}>Deadline</label>
                     <input type="date" value={newOpp.deadline}
                       onChange={e => setNewOpp({ ...newOpp, deadline: e.target.value })} style={inputStyle} />
@@ -481,20 +574,21 @@ export default function JournalTracker() {
                     placeholder="https://..." style={inputStyle} />
                 </div>
                 <div style={{ display: "flex", gap: 6 }}>
-                  <button onClick={addOpp} style={btnPrimary}>Add Opportunity</button>
+                  <button onClick={addOpp} style={btnPrimary}>Add</button>
                   <button onClick={() => setShowAddOpp(false)} style={btnSecondary}>Cancel</button>
                 </div>
               </div>
             </div>
           )}
-          {opportunities.length === 0 && (
+
+          {filteredOpps.length === 0 && (
             <div style={{ textAlign: "center", padding: "40px 20px", color: "#bbb",
               fontFamily: "'JetBrains Mono', monospace", fontSize: 12 }}>
-              <div style={{ fontSize: 32, marginBottom: 10 }}>📭</div>
-              No opportunities tracked yet. Add CFPs, special issues, and deadlines above.
+              No {oppFilter} opportunities found.
             </div>
           )}
-          {opportunities
+
+          {filteredOpps
             .sort((a, b) => {
               if (!a.deadline) return 1;
               if (!b.deadline) return -1;
@@ -507,7 +601,7 @@ export default function JournalTracker() {
       <footer style={{ borderTop: "1px solid #eee", padding: "16px 0 32px", marginTop: 32, textAlign: "center" }}>
         <p style={{ fontSize: 10, color: "#ccc", fontFamily: "'JetBrains Mono', monospace",
           textTransform: "uppercase", letterSpacing: "0.5px" }}>
-          Powered by OpenAlex · Data refreshed on demand · Your journals & opportunities are saved in your browser
+          Powered by OpenAlex · Conference data verified Mar 2026 · Your data is saved in your browser
         </p>
       </footer>
     </div>

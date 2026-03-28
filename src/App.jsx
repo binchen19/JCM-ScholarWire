@@ -411,7 +411,7 @@ export default function JournalTracker() {
 
       <footer style={{ borderTop: "1px solid #eee", padding: "16px 0 32px", marginTop: 32, textAlign: "center" }}>
         <p style={{ fontSize: 10, color: "#ccc", fontFamily: "'JetBrains Mono', monospace", textTransform: "uppercase", letterSpacing: "0.5px" }}>
-          Powered by OpenAlex · Conference deadlines verified Mar 2026 · Your data is saved in your browser
+          Powered by OpenAlex · Built by Bin Chen · Conference deadlines verified Mar 2026 · Your data is saved in your browser
         </p>
       </footer>
     </div>

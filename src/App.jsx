@@ -1,8 +1,8 @@
 import { useState, useEffect, useCallback, useRef } from "react";
 
 const DEFAULT_JOURNALS = [
-  { name: "Journal of Communication", issn: "0021-9916", color: "#E63946" },
-  { name: "Political Communication", issn: "1058-4609", color: "#457B9D" },
+  { name: "Journal of Communication", issn: "1460-2466", color: "#E63946" },
+  { name: "Political Communication", issn: "1091-7675", color: "#457B9D" },
   { name: "Intl Journal of Press/Politics", issn: "1940-1612", color: "#2A9D8F" },
   { name: "Digital Journalism", issn: "2167-0811", color: "#E9C46A" },
   { name: "New Media & Society", issn: "1461-4448", color: "#F4A261" },

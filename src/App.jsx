@@ -236,7 +236,7 @@ export default function JournalTracker() {
         // Use locations.source.issn (broader) instead of primary_location.source.issn
         // Use your real email for OpenAlex polite pool priority
         const res = await fetch(
-          `https://api.openalex.org/works?filter=locations.source.issn:${issns},from_publication_date:${dateStr}&sort=publication_date:desc&per_page=25&mailto=chenb@hku.hk`
+          `https://api.openalex.org/works?filter=locations.source.issn:${issns},from_publication_date:${dateStr}&sort=publication_date:desc&per_page=25&mailto=bindotchen@gmail.com`
         );
         if (!res.ok) continue;
         const data = await res.json();

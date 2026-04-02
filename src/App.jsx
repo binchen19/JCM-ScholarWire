@@ -202,7 +202,7 @@ export default function JournalTracker() {
   const [tab, setTab] = useState("Feed");
   const [searchTerm, setSearchTerm] = useState("");
   const [filterJournal, setFilterJournal] = useState("All");
-  const [timeRange, setTimeRange] = useState("90");
+  const [timeRange, setTimeRange] = useState("30");
   const [showAddJournal, setShowAddJournal] = useState(false);
   const [showAddCfp, setShowAddCfp] = useState(false);
   const [showAddConf, setShowAddConf] = useState(false);
